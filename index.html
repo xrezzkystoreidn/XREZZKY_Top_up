@@ -1,643 +1,170 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
-  <title>XREZZKY TOP UP</title>
-  <!-- Google Font: Poppins -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-  <style>
-    /* ===== RESET & GLOBAL ===== */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: #f8faff;
-      color: #0b1a33;
-      scroll-behavior: smooth;
-      overflow-x: hidden;
-    }
-    a { text-decoration: none; color: inherit; }
-    ul { list-style: none; }
-    img { max-width: 100%; display: block; }
-
-    /* ===== VARIABLES ===== */
-    :root {
-      --primary: #2563EB;
-      --primary-dark: #1D4ED8;
-      --primary-deep: #1E3A8A;
-      --white: #ffffff;
-      --gray-light: #f1f5f9;
-      --shadow-sm: 0 8px 24px rgba(37, 99, 235, 0.10);
-      --shadow-md: 0 16px 48px rgba(37, 99, 235, 0.15);
-      --radius: 20px;
-      --radius-sm: 16px;
-    }
-
-    /* ===== UTILITY ===== */
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-    .section-padding {
-      padding: 80px 0;
-    }
-    .section-title {
-      font-size: 2.4rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 16px;
-      color: var(--primary-deep);
-    }
-    .section-sub {
-      font-size: 1.1rem;
-      color: #475569;
-      max-width: 600px;
-      margin: 0 auto 48px;
-      text-align: center;
-    }
-    .text-center { text-align: center; }
-    .badge-glow {
-      display: inline-block;
-      background: rgba(37, 99, 235, 0.08);
-      backdrop-filter: blur(4px);
-      padding: 6px 18px;
-      border-radius: 40px;
-      font-weight: 500;
-      font-size: 0.9rem;
-      color: var(--primary);
-      border: 1px solid rgba(37, 99, 235, 0.15);
-      margin-bottom: 16px;
-    }
-
-    /* ===== BUTTONS ===== */
-    .btn-primary {
-      background: linear-gradient(135deg, #2563EB, #1D4ED8);
-      color: white;
-      border: none;
-      padding: 14px 36px;
-      border-radius: 50px;
-      font-weight: 600;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: all 0.25s ease;
-      box-shadow: 0 10px 28px -6px rgba(37, 99, 235, 0.4);
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 20px 40px -8px rgba(37, 99, 235, 0.5);
-    }
-    .btn-outline {
-      background: transparent;
-      border: 2px solid var(--primary);
-      color: var(--primary);
-      padding: 12px 32px;
-      border-radius: 50px;
-      font-weight: 600;
-      transition: all 0.25s;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .btn-outline:hover {
-      background: var(--primary);
-      color: white;
-      transform: translateY(-2px);
-      box-shadow: 0 10px 24px -8px rgba(37, 99, 235, 0.3);
-    }
-
-    /* ===== NAVBAR ===== */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 999;
-      background: rgba(255, 255, 255, 0.72);
-      backdrop-filter: blur(14px) saturate(180%);
-      -webkit-backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(37, 99, 235, 0.08);
-      padding: 14px 0;
-      transition: 0.2s;
-    }
-    .nav-wrapper {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-    }
-    .logo {
-      font-weight: 800;
-      font-size: 1.5rem;
-      background: linear-gradient(135deg, #2563EB, #1E3A8A);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      letter-spacing: -0.5px;
-    }
-    .logo span { font-weight: 400; color: var(--primary-dark); }
-    .nav-menu {
-      display: flex;
-      gap: 28px;
-      align-items: center;
-      font-weight: 500;
-      color: #1e293b;
-    }
-    .nav-menu a { transition: 0.2s; }
-    .nav-menu a:hover { color: var(--primary); }
-    .nav-actions {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-    }
-    .nav-actions .btn-outline { padding: 8px 20px; font-size: 0.9rem; border-width: 1.5px; }
-    .nav-actions .btn-primary { padding: 8px 24px; font-size: 0.9rem; }
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 6px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 6px;
-    }
-    .hamburger span {
-      width: 28px;
-      height: 3px;
-      background: var(--primary-deep);
-      border-radius: 4px;
-      transition: 0.25s;
-    }
-    /* mobile menu */
-    .mobile-menu {
-      display: none;
-      flex-direction: column;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(12px);
-      padding: 24px 20px;
-      border-radius: var(--radius-sm);
-      margin-top: 16px;
-      gap: 18px;
-      border: 1px solid rgba(37, 99, 235, 0.1);
-      box-shadow: var(--shadow-sm);
-    }
-    .mobile-menu a { font-weight: 500; padding: 8px 0; border-bottom: 1px solid #eef2f6; }
-    .mobile-menu .nav-actions { flex-direction: column; width: 100%; margin-top: 8px; }
-    .mobile-menu .nav-actions a { width: 100%; text-align: center; }
-
-    /* ===== HERO ===== */
-    .hero {
-      padding: 40px 0 60px;
-      background: linear-gradient(160deg, #ffffff 0%, #f0f7ff 100%);
-    }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      align-items: center;
-    }
-    .hero-content h1 {
-      font-size: 3.8rem;
-      font-weight: 800;
-      line-height: 1.15;
-      letter-spacing: -0.03em;
-      color: var(--primary-deep);
-      margin-bottom: 20px;
-    }
-    .hero-content h1 span {
-      background: linear-gradient(135deg, #2563EB, #1E3A8A);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-    .hero-content p {
-      font-size: 1.2rem;
-      color: #475569;
-      max-width: 500px;
-      margin-bottom: 32px;
-      line-height: 1.6;
-    }
-    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
-    .hero-illustration svg { width: 100%; max-height: 380px; }
-
-    /* ===== GAME POPULER ===== */
-    .game-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-      gap: 24px;
-      margin-top: 20px;
-    }
-    .game-card {
-      background: white;
-      padding: 24px 12px 20px;
-      border-radius: var(--radius-sm);
-      text-align: center;
-      box-shadow: var(--shadow-sm);
-      transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
-      border: 1px solid rgba(37, 99, 235, 0.04);
-      cursor: default;
-    }
-    .game-card:hover {
-      transform: translateY(-10px) scale(1.02);
-      box-shadow: var(--shadow-md);
-      border-color: rgba(37, 99, 235, 0.2);
-      background: #ffffff;
-    }
-    .game-card img {
-      width: 64px;
-      height: 64px;
-      object-fit: contain;
-      margin: 0 auto 10px;
-      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.04));
-    }
-    .game-card h4 { font-size: 0.95rem; font-weight: 600; color: #0b1a33; }
-
-    /* ===== KENAPA ===== */
-    .benefit-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 30px;
-      margin-top: 16px;
-    }
-    .benefit-card {
-      background: rgba(255,255,255,0.7);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      padding: 32px 20px;
-      border-radius: var(--radius);
-      border: 1px solid rgba(37, 99, 235, 0.08);
-      box-shadow: var(--shadow-sm);
-      transition: 0.3s;
-      text-align: center;
-    }
-    .benefit-card:hover { transform: scale(1.02); background: white; }
-    .benefit-card .icon { font-size: 2.6rem; margin-bottom: 16px; }
-    .benefit-card h4 { font-weight: 700; margin-bottom: 6px; color: var(--primary-deep); }
-
-    /* ===== PROMO SLIDER ===== */
-    .promo-slider {
-      background: linear-gradient(135deg, #1E3A8A, #2563EB);
-      border-radius: var(--radius);
-      padding: 40px 30px;
-      color: white;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 20px 40px -10px rgba(30, 58, 138, 0.4);
-      margin: 40px 0;
-    }
-    .promo-slide {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-    .promo-slide h2 { font-size: 2.2rem; font-weight: 700; }
-    .promo-slide p { opacity: 0.9; max-width: 400px; }
-
-    /* ===== PAYMENT ===== */
-    .payment-icons {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 28px 36px;
-      margin: 24px 0 12px;
-    }
-    .payment-icons svg { width: 44px; height: 44px; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.04)); transition: 0.2s; }
-    .payment-icons svg:hover { transform: scale(1.15); }
-
-    /* ===== TESTIMONI ===== */
-    .testi-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
-    }
-    .testi-card {
-      background: white;
-      padding: 28px 22px;
-      border-radius: var(--radius-sm);
-      box-shadow: var(--shadow-sm);
-      border: 1px solid #eff6ff;
-      transition: 0.25s;
-    }
-    .testi-card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); }
-    .testi-card .stars { color: #f59e0b; margin-bottom: 8px; }
-    .testi-card p { font-size: 0.95rem; line-height: 1.6; color: #1e293b; }
-    .testi-card .name { font-weight: 600; margin-top: 16px; color: var(--primary-deep); }
-
-    /* ===== FAQ ===== */
-    .faq-item {
-      background: white;
-      border-radius: var(--radius-sm);
-      margin-bottom: 16px;
-      box-shadow: var(--shadow-sm);
-      border: 1px solid #eef2f6;
-      overflow: hidden;
-    }
-    .faq-question {
-      display: flex;
-      justify-content: space-between;
-      padding: 20px 24px;
-      font-weight: 600;
-      cursor: pointer;
-      background: white;
-      transition: 0.2s;
-      color: var(--primary-deep);
-    }
-    .faq-question:hover { background: #f8faff; }
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      padding: 0 24px;
-      transition: 0.3s ease;
-      color: #475569;
-    }
-    .faq-item.active .faq-answer { max-height: 180px; padding: 0 24px 24px; }
-    .faq-item.active .faq-question i { transform: rotate(180deg); }
-
-    /* ===== FOOTER ===== */
-    footer {
-      background: #0b1a33;
-      color: #cbd5e1;
-      padding: 60px 0 30px;
-      border-radius: var(--radius) var(--radius) 0 0;
-      margin-top: 40px;
-    }
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1.5fr;
-      gap: 40px;
-    }
-    .footer-logo { font-size: 1.8rem; font-weight: 800; color: white; margin-bottom: 8px; }
-    .footer-grid h5 { color: white; margin-bottom: 16px; font-size: 1.1rem; }
-    .footer-grid a { display: block; margin-bottom: 10px; transition: 0.2s; }
-    .footer-grid a:hover { color: white; padding-left: 4px; }
-    .copyright { text-align: center; padding-top: 40px; border-top: 1px solid #1e2f4a; margin-top: 40px; font-size: 0.9rem; }
-
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 1024px) {
-      .hero-grid { grid-template-columns: 1fr; text-align: center; }
-      .hero-content p { margin-left: auto; margin-right: auto; }
-      .hero-actions { justify-content: center; }
-      .benefit-grid { grid-template-columns: repeat(2,1fr); }
-      .testi-grid { grid-template-columns: 1fr 1fr; }
-      .footer-grid { grid-template-columns: 1fr 1fr; }
-    }
-    @media (max-width: 768px) {
-      .nav-menu { display: none; }
-      .nav-actions { display: none; }
-      .hamburger { display: flex; }
-      .mobile-menu.open { display: flex; }
-      .hero-content h1 { font-size: 2.6rem; }
-      .game-grid { grid-template-columns: repeat(3, 1fr); }
-      .benefit-grid { grid-template-columns: 1fr 1fr; }
-      .testi-grid { grid-template-columns: 1fr; }
-      .payment-icons { gap: 16px; }
-      .footer-grid { grid-template-columns: 1fr; gap: 24px; }
-      .promo-slide { flex-direction: column; text-align: center; }
-    }
-    @media (max-width: 480px) {
-      .game-grid { grid-template-columns: repeat(2, 1fr); }
-      .hero-content h1 { font-size: 2.2rem; }
-      .section-title { font-size: 1.8rem; }
-      .container { padding: 0 16px; }
-    }
-
-    /* ===== ANIMATIONS ===== */
-    .fade-up { opacity: 0; transform: translateY(20px); transition: all 0.7s ease; }
-    .fade-up.visible { opacity: 1; transform: translateY(0); }
-    .slide-left { opacity: 0; transform: translateX(-30px); transition: 0.7s; }
-    .slide-left.visible { opacity: 1; transform: translateX(0); }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>XREZZKY TOP UP - Top Up Game Cepat & Terpercaya</title>
+    <meta name="description" content="Top up berbagai game favorit dengan proses instan, pembayaran lengkap, dan harga terbaik." />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/responsive.css" />
+    <link rel="stylesheet" href="assets/css/animation.css" />
 </head>
 <body>
+    <nav>
+        <div class="container nav-wrapper">
+            <a href="index.html" class="logo">XREZZKY <span>TOP UP</span></a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="games.html">Games</a></li>
+                <li><a href="promo.html">Promo</a></li>
+                <li><a href="faq.html">Bantuan</a></li>
+                <li><a href="history.html">Riwayat</a></li>
+            </ul>
+            <div class="nav-actions" id="navActions">
+                <a href="login.html" class="btn-outline btn-sm">Masuk</a>
+                <a href="register.html" class="btn-primary btn-sm">Daftar</a>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+        <div class="container mobile-menu" id="mobileMenu">
+            <a href="index.html">Home</a>
+            <a href="games.html">Games</a>
+            <a href="promo.html">Promo</a>
+            <a href="faq.html">Bantuan</a>
+            <a href="history.html">Riwayat</a>
+            <div class="nav-actions" id="mobileNavActions">
+                <a href="login.html" class="btn-outline">Masuk</a>
+                <a href="register.html" class="btn-primary">Daftar</a>
+            </div>
+        </div>
+    </nav>
 
-<!-- ===== NAVBAR ===== -->
-<nav>
-  <div class="container nav-wrapper">
-    <div class="logo">XREZZKY <span>TOP UP</span></div>
-    <ul class="nav-menu">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#games">Games</a></li>
-      <li><a href="#promo">Promo</a></li>
-      <li><a href="#bantuan">Bantuan</a></li>
-      <li><a href="#riwayat">Riwayat</a></li>
-    </ul>
-    <div class="nav-actions">
-      <a href="#" class="btn-outline">Masuk</a>
-      <a href="#" class="btn-primary">Daftar</a>
-    </div>
-    <button class="hamburger" id="hamburger" aria-label="menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-  <!-- Mobile menu -->
-  <div class="container mobile-menu" id="mobileMenu">
-    <a href="#home">Home</a>
-    <a href="#games">Games</a>
-    <a href="#promo">Promo</a>
-    <a href="#bantuan">Bantuan</a>
-    <a href="#riwayat">Riwayat</a>
-    <div class="nav-actions">
-      <a href="#" class="btn-outline">Masuk</a>
-      <a href="#" class="btn-primary">Daftar</a>
-    </div>
-  </div>
-</nav>
+    <section class="hero" id="home">
+        <div class="container hero-grid">
+            <div class="hero-content fade-up">
+                <span class="badge-glow">🚀 #1 Top Up Terpercaya</span>
+                <h1>Top Up Game <span>Jadi Lebih Cepat</span></h1>
+                <p>Top up berbagai game favorit dengan proses instan, pembayaran lengkap, dan harga terbaik.</p>
+                <div class="hero-actions">
+                    <a href="games.html" class="btn-primary">Top Up Sekarang →</a>
+                    <a href="#games" class="btn-outline">Lihat Game</a>
+                </div>
+            </div>
+            <div class="hero-illustration slide-left">
+                <svg viewBox="0 0 400 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="30" y="40" width="340" height="240" rx="28" fill="url(#grad)" />
+                    <rect x="60" y="80" width="120" height="80" rx="16" fill="white" fill-opacity="0.2" />
+                    <rect x="210" y="80" width="130" height="80" rx="16" fill="white" fill-opacity="0.15" />
+                    <circle cx="140" cy="210" r="30" fill="white" fill-opacity="0.1" />
+                    <circle cx="260" cy="210" r="30" fill="white" fill-opacity="0.1" />
+                    <path d="M80 270 L120 230 L160 270 L200 230 L240 270 L280 230 L320 270" stroke="white" stroke-width="5" stroke-linecap="round" />
+                    <defs><linearGradient id="grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#2563EB"/><stop offset="100%" stop-color="#1E3A8A"/></linearGradient></defs>
+                    <text x="50" y="180" fill="white" font-size="18" font-weight="700" font-family="Poppins">🎮</text>
+                    <text x="280" y="180" fill="white" font-size="18" font-weight="700" font-family="Poppins">⚡</text>
+                </svg>
+            </div>
+        </div>
+    </section>
 
-<!-- ===== HERO ===== -->
-<section class="hero" id="home">
-  <div class="container hero-grid">
-    <div class="hero-content fade-up visible">
-      <span class="badge-glow">🚀 #1 Top Up Terpercaya</span>
-      <h1>Top Up Game <span>Jadi Lebih Cepat</span></h1>
-      <p>Top up berbagai game favorit dengan proses instan, pembayaran lengkap, dan harga terbaik.</p>
-      <div class="hero-actions">
-        <a href="#" class="btn-primary">Top Up Sekarang →</a>
-        <a href="#" class="btn-outline">Lihat Game</a>
-      </div>
-    </div>
-    <div class="hero-illustration slide-left visible">
-      <svg viewBox="0 0 400 320" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="30" y="40" width="340" height="240" rx="28" fill="url(#grad)" />
-        <rect x="60" y="80" width="120" height="80" rx="16" fill="white" fill-opacity="0.2" />
-        <rect x="210" y="80" width="130" height="80" rx="16" fill="white" fill-opacity="0.15" />
-        <circle cx="140" cy="210" r="30" fill="white" fill-opacity="0.1" />
-        <circle cx="260" cy="210" r="30" fill="white" fill-opacity="0.1" />
-        <path d="M80 270 L120 230 L160 270 L200 230 L240 270 L280 230 L320 270" stroke="white" stroke-width="5" stroke-linecap="round" />
-        <defs><linearGradient id="grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#2563EB"/><stop offset="100%" stop-color="#1E3A8A"/></linearGradient></defs>
-        <text x="50" y="180" fill="white" font-size="18" font-weight="700" font-family="Poppins">🎮</text>
-      </svg>
-    </div>
-  </div>
-</section>
+    <section class="section-padding" id="games">
+        <div class="container text-center">
+            <span class="badge-glow">🎮 Pilihan Game</span>
+            <h2 class="section-title">Game Populer</h2>
+            <p class="section-sub">Tersedia lebih dari 12 game favorit dengan harga terbaik</p>
+            <div class="game-grid" id="gameGrid"></div>
+            <div style="margin-top: 40px;">
+                <a href="games.html" class="btn-primary">Lihat Semua Game →</a>
+            </div>
+        </div>
+    </section>
 
-<!-- ===== GAME POPULER ===== -->
-<section class="section-padding" id="games">
-  <div class="container text-center">
-    <span class="badge-glow">🎮 Pilihan Game</span>
-    <h2 class="section-title">Game Populer</h2>
-    <p class="section-sub">Tersedia lebih dari 12 game favorit dengan harga terbaik</p>
-    <div class="game-grid">
-      <!-- 12 game cards -->
-      <div class="game-card"><svg width="64" height="64" viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="#2563EB" opacity="0.15"/><text x="32" y="40" text-anchor="middle" font-size="28" font-family="sans-serif">⚔️</text></svg><h4>Mobile Legends</h4></div>
-      <div class="game-card"><svg width="64" height="64" viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="#2563EB" opacity="0.15"/><text x="32" y="40" text-anchor="middle" font-size="28">🔥</text></svg><h4>Free Fire</h4></div>
-      <div class="game-card"><svg width="64" height="64" viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="#2563EB" opacity="0.15"/><text x="32" y="40" text-anchor="middle" font-size="28">🔫</text></svg><h4>PUBG Mobile</h4></div>
-      <div class="game-card"><svg width="64" height="64" viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="#2563EB" opacity="0.15"/><text x="32" y="40" text-anchor="middle" font-size="28">👑</text></svg><h4>Honor of Kings</h4></div>
-      <div class="game-card"><svg width="64" height="64" viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="#2563EB" opacity="0.15"/><text x="32" y="40" text-anchor="middle" font-size="28">💣</text></svg><h4>COD Mobile</h4></div>
-      <div class="game-card"><svg width="64" height="64" viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="#2563EB" opacity="0.15"/><text x="32" y="40" text-anchor="middle" font-size="28">🎯</text></svg><h4>Valorant</h4></div>
-      <div class="game-card"><svg width="64" height="64" viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="#2563EB" opacity="0.15"/><text x="32" y="40" text-anchor="middle" font-size="28">🧱</text></svg><h4>Roblox</h4></div>
-      <div class="game-card"><svg width="64" height="64" viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="#2563EB" opacity="0.15"/><text x="32" y="40" text-anchor="middle" font-size="28">🌠</text></svg><h4>Genshin Impact</h4></div>
-      <div class="game-card"><svg width="64" height="64" viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="#2563EB" opacity="0.15"/><text x="32" y="40" text-anchor="middle" font-size="28">⭐</text></svg><h4>Honkai Star Rail</h4></div>
-      <div class="game-card"><svg width="64" height="64" viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="#2563EB" opacity="0.15"/><text x="32" y="40" text-anchor="middle" font-size="28">🩸</text></svg><h4>Blood Strike</h4></div>
-      <div class="game-card"><svg width="64" height="64" viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="#2563EB" opacity="0.15"/><text x="32" y="40" text-anchor="middle" font-size="28">⚽</text></svg><h4>FC Mobile</h4></div>
-      <div class="game-card"><svg width="64" height="64" viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="#2563EB" opacity="0.15"/><text x="32" y="40" text-anchor="middle" font-size="28">🌀</text></svg><h4>Delta Force</h4></div>
-    </div>
-  </div>
-</section>
+    <section class="section-padding" style="padding-top:0;">
+        <div class="container text-center">
+            <span class="badge-glow">✨ Keunggulan</span>
+            <h2 class="section-title">Kenapa XREZZKY?</h2>
+            <div class="benefit-grid">
+                <div class="benefit-card"><div class="icon">⚡</div><h4>Instan</h4><p>Proses kilat 3 detik</p></div>
+                <div class="benefit-card"><div class="icon">🔒</div><h4>Aman</h4><p>SSL & proteksi data</p></div>
+                <div class="benefit-card"><div class="icon">💰</div><h4>Harga Murah</h4><p>Termurah se-Indonesia</p></div>
+                <div class="benefit-card"><div class="icon">🎮</div><h4>Banyak Game</h4><p>100+ game tersedia</p></div>
+                <div class="benefit-card"><div class="icon">💳</div><h4>Pembayaran Lengkap</h4><p>QRIS, E-Wallet, Bank</p></div>
+                <div class="benefit-card"><div class="icon">🕒</div><h4>Online 24 Jam</h4><p>CS siap membantu</p></div>
+            </div>
+        </div>
+    </section>
 
-<!-- ===== KENAPA XREZZKY ===== -->
-<section class="section-padding" style="padding-top:0;" id="bantuan">
-  <div class="container text-center">
-    <span class="badge-glow">✨ Keunggulan</span>
-    <h2 class="section-title">Kenapa XREZZKY?</h2>
-    <div class="benefit-grid">
-      <div class="benefit-card"><div class="icon">⚡</div><h4>Instan</h4><p>Proses kilat 3 detik</p></div>
-      <div class="benefit-card"><div class="icon">🔒</div><h4>Aman</h4><p>SSL & proteksi data</p></div>
-      <div class="benefit-card"><div class="icon">💰</div><h4>Harga Murah</h4><p>Termurah se-Indonesia</p></div>
-      <div class="benefit-card"><div class="icon">🎮</div><h4>Banyak Game</h4><p>100+ game tersedia</p></div>
-      <div class="benefit-card"><div class="icon">💳</div><h4>Pembayaran Lengkap</h4><p>QRIS, E-Wallet, Bank</p></div>
-      <div class="benefit-card"><div class="icon">🕒</div><h4>Online 24 Jam</h4><p>CS siap membantu</p></div>
-    </div>
-  </div>
-</section>
+    <section id="promo">
+        <div class="container">
+            <div class="promo-slider" id="promoSlider">
+                <div class="promo-slide" id="promoContent"></div>
+            </div>
+        </div>
+    </section>
 
-<!-- ===== PROMO SLIDER ===== -->
-<section id="promo">
-  <div class="container">
-    <div class="promo-slider" id="promoSlider">
-      <div class="promo-slide" id="promoContent">
-        <div><h2>🎉 Promo Spesial</h2><p>Diskon 20% untuk semua game setiap Jumat</p></div>
-        <a href="#" class="btn-primary" style="background:white; color:#1E3A8A; box-shadow:0 8px 20px rgba(0,0,0,0.1);">Klaim Sekarang</a>
-      </div>
-    </div>
-  </div>
-</section>
+    <section class="section-padding" style="padding-top:0;">
+        <div class="container text-center">
+            <span class="badge-glow">💳 Pembayaran</span>
+            <h2 class="section-title">Metode Pembayaran</h2>
+            <div class="payment-icons" id="paymentIcons"></div>
+        </div>
+    </section>
 
-<!-- ===== METODE PEMBAYARAN ===== -->
-<section class="section-padding" style="padding-top:0;">
-  <div class="container text-center">
-    <span class="badge-glow">💳 Pembayaran</span>
-    <h2 class="section-title">Metode Pembayaran</h2>
-    <div class="payment-icons">
-      <svg viewBox="0 0 48 48"><rect width="48" height="48" rx="8" fill="#2563EB" opacity="0.1"/><text x="24" y="32" text-anchor="middle" font-size="20" fill="#1E3A8A">QRIS</text></svg>
-      <svg viewBox="0 0 48 48"><rect width="48" height="48" rx="8" fill="#2563EB" opacity="0.1"/><text x="24" y="32" text-anchor="middle" font-size="16" fill="#1E3A8A">DANA</text></svg>
-      <svg viewBox="0 0 48 48"><rect width="48" height="48" rx="8" fill="#2563EB" opacity="0.1"/><text x="24" y="32" text-anchor="middle" font-size="16" fill="#1E3A8A">GoPay</text></svg>
-      <svg viewBox="0 0 48 48"><rect width="48" height="48" rx="8" fill="#2563EB" opacity="0.1"/><text x="24" y="32" text-anchor="middle" font-size="16" fill="#1E3A8A">OVO</text></svg>
-      <svg viewBox="0 0 48 48"><rect width="48" height="48" rx="8" fill="#2563EB" opacity="0.1"/><text x="24" y="32" text-anchor="middle" font-size="12" fill="#1E3A8A">ShopeePay</text></svg>
-      <svg viewBox="0 0 48 48"><rect width="48" height="48" rx="8" fill="#2563EB" opacity="0.1"/><text x="24" y="32" text-anchor="middle" font-size="16" fill="#1E3A8A">BCA</text></svg>
-      <svg viewBox="0 0 48 48"><rect width="48" height="48" rx="8" fill="#2563EB" opacity="0.1"/><text x="24" y="32" text-anchor="middle" font-size="16" fill="#1E3A8A">BRI</text></svg>
-      <svg viewBox="0 0 48 48"><rect width="48" height="48" rx="8" fill="#2563EB" opacity="0.1"/><text x="24" y="32" text-anchor="middle" font-size="16" fill="#1E3A8A">BNI</text></svg>
-      <svg viewBox="0 0 48 48"><rect width="48" height="48" rx="8" fill="#2563EB" opacity="0.1"/><text x="24" y="32" text-anchor="middle" font-size="14" fill="#1E3A8A">Mandiri</text></svg>
-      <svg viewBox="0 0 48 48"><rect width="48" height="48" rx="8" fill="#2563EB" opacity="0.1"/><text x="24" y="32" text-anchor="middle" font-size="12" fill="#1E3A8A">SeaBank</text></svg>
-    </div>
-  </div>
-</section>
+    <section class="section-padding" style="padding-top:0;">
+        <div class="container text-center">
+            <span class="badge-glow">💬 Testimoni</span>
+            <h2 class="section-title">Apa Kata Mereka</h2>
+            <div class="testi-grid" id="testiGrid"></div>
+        </div>
+    </section>
 
-<!-- ===== TESTIMONI ===== -->
-<section class="section-padding" style="padding-top:0;" id="riwayat">
-  <div class="container text-center">
-    <span class="badge-glow">💬 Testimoni</span>
-    <h2 class="section-title">Apa Kata Mereka</h2>
-    <div class="testi-grid">
-      <div class="testi-card"><div class="stars">★★★★★</div><p>“Top up super cepat, harga murah banget!”</p><div class="name">— Andi, MLBB</div></div>
-      <div class="testi-card"><div class="stars">★★★★★</div><p>“Pertama kali top up di sini, prosesnya kilat.”</p><div class="name">— Siti, Free Fire</div></div>
-      <div class="testi-card"><div class="stars">★★★★★</div><p>“Pembayaran lengkap, saya pakai QRIS.”</p><div class="name">— Rizky, PUBG</div></div>
-      <div class="testi-card"><div class="stars">★★★★★</div><p>“Customer service responsif 24 jam.”</p><div class="name">— Dina, Genshin</div></div>
-      <div class="testi-card"><div class="stars">★★★★★</div><p>“Sudah langganan, selalu promo setiap minggu.”</p><div class="name">— Fajar, Valorant</div></div>
-      <div class="testi-card"><div class="stars">★★★★★</div><p>“Top up game favorit jadi makin mudah.”</p><div class="name">— Citra, Roblox</div></div>
-    </div>
-  </div>
-</section>
+    <section class="section-padding" style="padding-top:0;">
+        <div class="container" style="max-width:800px;">
+            <h2 class="section-title text-center">FAQ</h2>
+            <div class="faq-list" id="faqList"></div>
+            <div style="text-align:center; margin-top: 30px;">
+                <a href="faq.html" class="btn-outline">Lihat Semua FAQ</a>
+            </div>
+        </div>
+    </section>
 
-<!-- ===== FAQ ===== -->
-<section class="section-padding" style="padding-top:0;">
-  <div class="container" style="max-width:800px;">
-    <h2 class="section-title text-center">FAQ</h2>
-    <div class="faq-item active"><div class="faq-question">Apa saja game yang tersedia? <i>▼</i></div><div class="faq-answer">Tersedia 100+ game mulai dari ML, FF, PUBG, Genshin, dan lainnya.</div></div>
-    <div class="faq-item"><div class="faq-question">Berapa lama proses top up? <i>▼</i></div><div class="faq-answer">Proses instan kurang dari 1 menit setelah pembayaran berhasil.</div></div>
-    <div class="faq-item"><div class="faq-question">Apakah ada potongan biaya? <i>▼</i></div><div class="faq-answer">Tidak ada biaya tambahan, harga sudah termasuk semua.</div></div>
-    <div class="faq-item"><div class="faq-question">Metode pembayaran apa saja? <i>▼</i></div><div class="faq-answer">QRIS, DANA, GoPay, OVO, ShopeePay, BCA, BRI, BNI, Mandiri, SeaBank.</div></div>
-  </div>
-</section>
+    <footer>
+        <div class="container footer-grid">
+            <div>
+                <div class="footer-logo">XREZZKY TOP UP</div>
+                <p style="margin-top:8px;">Top up game cepat, aman & terpercaya.</p>
+            </div>
+            <div>
+                <h5>Menu</h5>
+                <a href="index.html">Home</a>
+                <a href="games.html">Games</a>
+                <a href="promo.html">Promo</a>
+                <a href="faq.html">Bantuan</a>
+                <a href="contact.html">Kontak</a>
+            </div>
+            <div>
+                <h5>Kontak</h5>
+                <a>📧 cs@xrezzy.com</a>
+                <a>📞 +62 88293064112</a>
+                <a>📍 Kab Bogor, Indonesia</a>
+            </div>
+            <div>
+                <h5>Media Sosial</h5>
+                <a href="#">Instagram</a>
+                <a href="#">YouTube</a>
+                <a href="#">Twitter</a>
+                <a href="#">TikTok</a>
+            </div>
+        </div>
+        <div class="container copyright">© 2025 XREZZKY TOP UP. All rights reserved.</div>
+    </footer>
 
-<!-- ===== FOOTER ===== -->
-<footer>
-  <div class="container footer-grid">
-    <div><div class="footer-logo">XREZZKY TOP UP</div><p style="margin-top:8px;">Top up game cepat, aman & terpercaya.</p></div>
-    <div><h5>Menu</h5><a href="#">Home</a><a href="#">Games</a><a href="#">Promo</a><a href="#">Bantuan</a></div>
-    <div><h5>Kontak</h5><a>📧 cs@xrezzy.com</a><a>📞 +62 812 3456 7890</a></div>
-    <div><h5>Media Sosial</h5><a>Instagram</a><a>YouTube</a><a>Twitter</a><a>TikTok</a></div>
-  </div>
-  <div class="container copyright">© 2025 XREZZKY TOP UP. All rights reserved.</div>
-</footer>
-
-<!-- ===== JAVASCRIPT ===== -->
-<script>
-  (function() {
-    // Hamburger
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobileMenu');
-    hamburger.addEventListener('click', function(e) {
-      e.stopPropagation();
-      mobileMenu.classList.toggle('open');
-    });
-    document.addEventListener('click', function(e) {
-      if (!e.target.closest('nav')) mobileMenu.classList.remove('open');
-    });
-
-    // FAQ accordion
-    document.querySelectorAll('.faq-question').forEach(q => {
-      q.addEventListener('click', function() {
-        const item = this.parentElement;
-        const isActive = item.classList.contains('active');
-        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
-        if (!isActive) item.classList.add('active');
-      });
-    });
-
-    // Promo slider otomatis (3 slide bergantian)
-    const promoContent = document.getElementById('promoContent');
-    const promos = [
-      { title: '🎉 Promo Spesial', desc: 'Diskon 20% untuk semua game setiap Jumat', btn: 'Klaim Sekarang' },
-      { title: '⚡ Top Up Murah', desc: 'Dapatkan cashback 5% untuk pembelian pertama', btn: 'Ambil Cashback' },
-      { title: '🎮 Event Game', desc: 'Free diamond & voucher untuk game pilihan', btn: 'Lihat Event' }
-    ];
-    let idx = 0;
-    setInterval(() => {
-      idx = (idx + 1) % promos.length;
-      const p = promos[idx];
-      promoContent.innerHTML = `<div><h2>${p.title}</h2><p>${p.desc}</p></div><a href="#" class="btn-primary" style="background:white; color:#1E3A8A; box-shadow:0 8px 20px rgba(0,0,0,0.1);">${p.btn}</a>`;
-    }, 4500);
-
-    // Intersection Observer untuk fade-up
-    const fadeEls = document.querySelectorAll('.fade-up:not(.visible), .slide-left:not(.visible)');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.2 });
-    fadeEls.forEach(el => observer.observe(el));
-  })();
-</script>
+    <script type="module" src="assets/js/app.js"></script>
 </body>
-     </html>
+</html>
