@@ -3,13 +3,7 @@
   "version": "1.0.0",
   "description": "XREZZKY TOP UP - Platform Top Up Game",
   "main": "index.html",
-  "scripts": {
-    "build": "echo 'Static site - no build needed'"
-  },
   "dependencies": {
     "@supabase/supabase-js": "^2.39.0"
-  },
-  "keywords": ["topup", "game", "digiflazz", "supabase"],
-  "author": "XREZZKY",
-  "license": "MIT"
+  }
 }
