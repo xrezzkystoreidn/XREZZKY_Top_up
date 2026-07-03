@@ -1,9 +1,6 @@
 {
   "name": "xrezzy-topup",
   "version": "1.0.0",
-  "description": "XREZZKY TOP UP - Platform Top Up Game",
-  "main": "index.html",
-  "dependencies": {
-    "@supabase/supabase-js": "^2.39.0"
-  }
+  "description": "XREZZKY TOP UP",
+  "main": "index.html"
 }
