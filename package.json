@@ -4,7 +4,7 @@
   "description": "XREZZKY TOP UP - Platform Top Up Game",
   "main": "index.html",
   "scripts": {
-    "build": "echo 'Build skipped - static site'"
+    "build": "echo 'Static site - no build needed'"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.39.0"
