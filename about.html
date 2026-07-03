@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Games - XREZZKY TOP UP</title>
+    <title>Tentang - XREZZKY TOP UP</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -17,7 +17,7 @@
             <a href="index.html" class="logo">XREZZKY <span>TOP UP</span></a>
             <ul class="nav-menu">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="games.html" class="active">Games</a></li>
+                <li><a href="games.html">Games</a></li>
                 <li><a href="promo.html">Promo</a></li>
                 <li><a href="faq.html">Bantuan</a></li>
                 <li><a href="history.html">Riwayat</a></li>
@@ -44,24 +44,26 @@
     </nav>
 
     <section class="section-padding">
-        <div class="container">
+        <div class="container" style="max-width:800px;">
             <div class="text-center">
-                <span class="badge-glow">🎮 Koleksi Game</span>
-                <h2 class="section-title">Semua Game</h2>
-                <p class="section-sub">Pilih game favoritmu dan top up sekarang</p>
+                <span class="badge-glow">ℹ️ Tentang</span>
+                <h2 class="section-title">Tentang XREZZKY TOP UP</h2>
             </div>
-            <div class="game-filter">
-                <input type="text" id="searchGame" placeholder="Cari game..." class="search-input" />
-                <select id="categoryFilter" class="filter-select">
-                    <option value="">Semua Kategori</option>
-                    <option value="MOBA">MOBA</option>
-                    <option value="Battle Royale">Battle Royale</option>
-                    <option value="FPS">FPS</option>
-                    <option value="RPG">RPG</option>
-                    <option value="Sports">Sports</option>
-                </select>
+            <div class="about-content">
+                <p style="font-size:1.1rem; line-height:1.8; margin-bottom:20px;">
+                    <strong>XREZZKY TOP UP</strong> adalah platform top up game terpercaya yang menyediakan 
+                    layanan pengisian diamond, voucher, dan item game dengan proses cepat dan harga terbaik.
+                </p>
+                <p style="font-size:1.1rem; line-height:1.8; margin-bottom:20px;">
+                    Didirikan pada tahun 2025, kami berkomitmen untuk memberikan pengalaman top up 
+                    yang aman, nyaman, dan memuaskan bagi para gamer di Indonesia.
+                </p>
+                <div class="benefit-grid" style="margin-top:40px;">
+                    <div class="benefit-card"><div class="icon">🎯</div><h4>Misi</h4><p>Memberikan layanan top up terbaik untuk semua gamer</p></div>
+                    <div class="benefit-card"><div class="icon">🌟</div><h4>Visi</h4><p>Menjadi platform top up nomor 1 di Indonesia</p></div>
+                    <div class="benefit-card"><div class="icon">💎</div><h4>Nilai</h4><p>Kecepatan, Keamanan, dan Kepercayaan</p></div>
+                </div>
             </div>
-            <div class="game-grid game-grid-large" id="gameGrid"></div>
         </div>
     </section>
 
@@ -92,6 +94,6 @@
         <div class="container copyright">© 2025 XREZZKY TOP UP. All rights reserved.</div>
     </footer>
 
-    <script type="module" src="assets/js/games.js"></script>
+    <script type="module" src="assets/js/app.js"></script>
 </body>
 </html>

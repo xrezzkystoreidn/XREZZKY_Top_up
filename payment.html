@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Invoice - XREZZKY TOP UP</title>
+    <title>Status Pembayaran - XREZZKY TOP UP</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -20,13 +20,14 @@
 
     <section class="section-padding">
         <div class="container payment-status-container">
-            <div class="payment-status-card" id="invoiceCard">
-                <div class="payment-status-icon">📄</div>
-                <h2>Invoice</h2>
-                <div class="payment-status-detail" id="invoiceDetail"></div>
-                <div class="payment-actions">
-                    <button class="btn-primary" onclick="window.print()">Cetak Invoice</button>
-                    <a href="dashboard.html" class="btn-outline">Ke Dashboard</a>
+            <div class="payment-status-card" id="paymentStatus">
+                <div class="payment-status-icon" id="statusIcon">⏳</div>
+                <h2 id="statusTitle">Memproses...</h2>
+                <p id="statusMessage">Mohon tunggu, pembayaran sedang diproses</p>
+                <div class="payment-status-detail" id="statusDetail"></div>
+                <div class="payment-actions" id="statusActions">
+                    <a href="dashboard.html" class="btn-primary">Ke Dashboard</a>
+                    <a href="games.html" class="btn-outline">Top Up Lagi</a>
                 </div>
             </div>
         </div>

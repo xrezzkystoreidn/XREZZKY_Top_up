@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Riwayat - XREZZKY TOP UP</title>
+    <title>Profil - XREZZKY TOP UP</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -17,8 +17,8 @@
             <a href="index.html" class="logo">XREZZKY <span>TOP UP</span></a>
             <ul class="nav-menu">
                 <li><a href="dashboard.html">Dashboard</a></li>
-                <li><a href="history.html" class="active">Riwayat</a></li>
-                <li><a href="profile.html">Profil</a></li>
+                <li><a href="history.html">Riwayat</a></li>
+                <li><a href="profile.html" class="active">Profil</a></li>
                 <li><a href="games.html">Games</a></li>
             </ul>
             <div class="nav-actions">
@@ -38,17 +38,32 @@
     </nav>
 
     <section class="section-padding">
-        <div class="container">
-            <h2 class="section-title">Riwayat Transaksi</h2>
-            <div class="history-filter">
-                <select id="filterGame"><option value="">Semua Game</option></select>
-                <select id="filterStatus"><option value="">Semua Status</option><option value="success">Berhasil</option><option value="pending">Proses</option><option value="failed">Gagal</option></select>
-            </div>
-            <div class="history-list" id="historyList"></div>
-            <div class="pagination" id="pagination">
-                <button class="btn-outline btn-sm" id="prevPage">Prev</button>
-                <span id="pageInfo">Halaman 1 dari 1</span>
-                <button class="btn-outline btn-sm" id="nextPage">Next</button>
+        <div class="container profile-container">
+            <div class="profile-card">
+                <div class="profile-avatar">
+                    <div class="avatar" id="userAvatar">👤</div>
+                    <h2 id="userName">User Name</h2>
+                    <p id="userEmail">user@email.com</p>
+                </div>
+                <form class="profile-form" id="profileForm">
+                    <div class="form-group">
+                        <label>Nama Lengkap</label>
+                        <input type="text" id="fullname" required />
+                    </div>
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input type="text" id="username" required />
+                    </div>
+                    <div class="form-group">
+                        <label>Nomor HP</label>
+                        <input type="tel" id="phone" />
+                    </div>
+                    <div class="form-group">
+                        <label>Alamat</label>
+                        <textarea rows="3" id="address"></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary">Simpan Perubahan</button>
+                </form>
             </div>
         </div>
     </section>
