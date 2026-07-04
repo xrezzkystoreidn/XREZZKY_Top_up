@@ -2,6 +2,8 @@
 // DIGIFLAZZ API - XREZZKY TOP UP
 // ============================================================
 
+import crypto from 'crypto'
+
 const DIGIFLAZZ_API_URL = 'https://api.digiflazz.com/v1'
 
 // Environment variables (Vercel)
@@ -10,7 +12,6 @@ const DIGIFLAZZ_API_KEY = process.env.DIGIFLAZZ_API_KEY || 'xxxxxxxxxxxxxxxx'
 
 // ===== GENERATE SIGNATURE =====
 const generateSignature = (data) => {
-    const crypto = require('crypto')
     const stringToSign = `${DIGIFLAZZ_USERNAME}${DIGIFLAZZ_API_KEY}${data}`
     return crypto.createHash('md5').update(stringToSign).digest('hex')
 }
@@ -44,20 +45,21 @@ export const getPriceList = async (gameCode = null) => {
 }
 
 // ===== CHECK PRICE =====
+// Catatan: endpoint ini dipakai untuk mengisi daftar tombol nominal di
+// halaman game.html (lihat loadNominals() di js/games.js), yang butuh
+// ARRAY of {nominal, price}. Sebelumnya fungsi ini pakai .find() dan
+// mengembalikan satu object saja, jadi result.data.map(...) di frontend
+// akan langsung error karena data.map bukan fungsi pada object biasa.
 export const checkPrice = async (gameCode) => {
     try {
         const result = await getPriceList(gameCode)
         if (result.success && result.data.length > 0) {
-            const game = result.data.find(g => g.code === gameCode)
-            if (game) {
-                return { 
-                    success: true, 
-                    data: {
-                        nominal: game.nominal,
-                        price: game.price,
-                        name: game.name
-                    }
-                }
+            const items = result.data
+                .filter(g => g.code === gameCode || g.buyer_sku_code === gameCode)
+                .map(g => ({ nominal: g.nominal || g.product_name, price: g.price, name: g.name || g.product_name }))
+
+            if (items.length > 0) {
+                return { success: true, data: items }
             }
         }
         return { success: false, error: 'Game not found' }
