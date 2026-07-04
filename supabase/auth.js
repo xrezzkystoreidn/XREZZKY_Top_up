@@ -92,7 +92,7 @@ export const getCurrentUser = async () => {
 export const resetPassword = async (email) => {
     try {
         const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
-            redirectTo: window.location.origin + '/reset-password.html'
+            redirectTo: window.location.origin + '/forgot-password.html'
         })
         if (error) throw error
         return { success: true, data }
